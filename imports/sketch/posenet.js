@@ -12,7 +12,7 @@ export default function (sketch) {
     video = sketch.createCapture(sketch.VIDEO);
     video.size(sketch.width, sketch.height);
     poseNet = ml5.poseNet(video, () => {
-      sketch.print("Look for us");
+      sketch.print('Look for us');
     });
     poseNet.on('pose', (results) => {
       poses = results;
@@ -37,8 +37,8 @@ export default function (sketch) {
       const organism = window.superorganism[i].poses;
       for (let j = 0; j < organism.length; j += 1) {
         for (let k = 0; k < organism[j].skeleton.length; k += 1) {
-          let partA = organism[j].skeleton[k][0];
-          let partB = organism[j].skeleton[k][1];
+          const partA = organism[j].skeleton[k][0];
+          const partB = organism[j].skeleton[k][1];
           sketch.push();
           sketch.translate(sketch.width, 0);
           sketch.scale(-1, 1);

@@ -38,6 +38,6 @@ Meteor.methods({
   },
   'organisms.prune'() {
     const now = moment().valueOf();
-    Organisms.remove({ createdAt: { $lt: now - 2000 } });
+    Organisms.remove({ createdAt: { $lt: now - 5000 } });
   },
 });

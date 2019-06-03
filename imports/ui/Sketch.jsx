@@ -35,7 +35,9 @@ class Sketch extends Component {
 }
 
 export default withTracker(() => {
+  Meteor.subscribe('organisms');
+  
   return {
     superorganism: Organisms.find({}).fetch(),
-  }
+  };
 })(Sketch);
