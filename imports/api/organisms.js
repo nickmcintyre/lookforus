@@ -18,16 +18,16 @@ Meteor.methods({
     this.setUserId(userId);
     const now = moment().valueOf();
     Organisms.insert({
-      poses: null,
+      skeletons: [],
       createdAt: now,
       organism: this.userId,
     });
   },
-  'organisms.insert'(poses) {
+  'organisms.insert'(skeletons) {
     Organisms.remove({ organism: this.userId });
     const now = moment().valueOf();
     Organisms.insert({
-      poses,
+      skeletons,
       createdAt: now,
       organism: this.userId,
     });

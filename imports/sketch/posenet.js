@@ -27,27 +27,35 @@ export default function (sketch) {
   };
 
   function insertOrganisms() {
-    Meteor.call('organisms.insert', poses);
+    const skeletons = [];
+    for (let i = 0; i < poses.length; i += 1) {
+      if (poses[i].skeleton.length > 0) {
+        skeletons.push(poses[i].skeleton);
+      }
+    }
+
+    Meteor.call('organisms.insert', skeletons);
   }
 
   function drawSuperorganism() {
-    sketch.stroke(125, 125, 125);
+    if (!window.superorganism || window.superorganism.length === 0) {
+      return;
+    }
+
+    sketch.stroke(0, 0, 0, 125);
     sketch.strokeWeight(5);
     for (let i = 0; i < window.superorganism.length; i += 1) {
-      const organism = window.superorganism[i].poses;
-      if (organism && organism.length > 0) {
-        for (let j = 0; j < organism.length; j += 1) {
-          if (organism[j].skeleton) {
-            for (let k = 0; k < organism[j].skeleton.length; k += 1) {
-              const partA = organism[j].skeleton[k][0];
-              const partB = organism[j].skeleton[k][1];
-              sketch.push();
-              sketch.translate(sketch.width, 0);
-              sketch.scale(-1, 1);
-              sketch.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
-              sketch.pop();
-            }
-          } 
+      const { skeletons } = window.superorganism[i];
+      for (let j = 0; j < skeletons.length; j += 1) {
+        const skeleton = skeletons[j];
+        for (let k = 0; k < skeleton.length; k += 1) {
+          const partA = skeleton[k][0];
+          const partB = skeleton[k][1];
+          sketch.push();
+          sketch.translate(sketch.width, 0);
+          sketch.scale(-1, 1);
+          sketch.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+          sketch.pop();
         }
       }
     }
