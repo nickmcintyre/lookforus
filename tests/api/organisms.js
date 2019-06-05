@@ -6,12 +6,12 @@ import moment from 'moment';
 import Organisms from '/imports/api/organisms';
 
 if (Meteor.isServer) {
-  describe('Organisms', () => {
-    describe('methods', () => {
+  describe('Organisms', function () {
+    describe('methods', function () {
       const userId = Random.id();
       let organismId;
 
-      beforeEach(() => {
+      beforeEach(function () {
         Organisms.remove({});
         organismId = Organisms.insert({
           poses: [
@@ -24,18 +24,18 @@ if (Meteor.isServer) {
         });
       });
 
-      it('prunes old organisms', () => {
+      it('prunes old organisms', function () {
         const pruneSelf = Meteor.server.method_handlers['organisms.prune'];
         const invocation = { userId };
         pruneSelf.apply(invocation, [organismId]);
         expect(Organisms.find().count()).to.equal(0);
       });
 
-      it('cleans up on disconnect', () => {
+      it('cleans up on disconnect', function () {
         const removeSelf = Meteor.server.method_handlers['organisms.disconnect'];
         const invocation = { userId };
         removeSelf.apply(invocation, [organismId]);
-        expect(Organisms.find().count()).to.equal(0);
+        expect(Organisms.find({}).count()).to.equal(0);
       });
     });
   });

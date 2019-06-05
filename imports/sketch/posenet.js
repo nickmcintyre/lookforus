@@ -35,18 +35,21 @@ export default function (sketch) {
     sketch.strokeWeight(5);
     for (let i = 0; i < window.superorganism.length; i += 1) {
       const organism = window.superorganism[i].poses;
-      for (let j = 0; j < organism.length; j += 1) {
-        for (let k = 0; k < organism[j].skeleton.length; k += 1) {
-          const partA = organism[j].skeleton[k][0];
-          const partB = organism[j].skeleton[k][1];
-          sketch.push();
-          sketch.translate(sketch.width, 0);
-          sketch.scale(-1, 1);
-          sketch.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
-          sketch.pop();
+      if (organism && organism.length > 0) {
+        for (let j = 0; j < organism.length; j += 1) {
+          if (organism[j].skeleton) {
+            for (let k = 0; k < organism[j].skeleton.length; k += 1) {
+              const partA = organism[j].skeleton[k][0];
+              const partB = organism[j].skeleton[k][1];
+              sketch.push();
+              sketch.translate(sketch.width, 0);
+              sketch.scale(-1, 1);
+              sketch.line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
+              sketch.pop();
+            }
+          } 
         }
       }
     }
   }
-
 }
