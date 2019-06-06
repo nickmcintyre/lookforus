@@ -28,8 +28,7 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    const { userId } = this.props;
-    Meteor.call('organisms.disconnect', userId);
+    Meteor.call('organisms.disconnect');
   }
 
   renderInvitation() {

@@ -20,21 +20,20 @@ Meteor.methods({
     Organisms.insert({
       skeletons: [],
       createdAt: now,
-      organism: this.userId,
+      userId: this.userId,
     });
   },
   'organisms.insert'(skeletons) {
-    Organisms.remove({ organism: this.userId });
+    Organisms.remove({ userId: this.userId });
     const now = moment().valueOf();
     Organisms.insert({
       skeletons,
       createdAt: now,
-      organism: this.userId,
+      userId: this.userId,
     });
   },
-  'organisms.disconnect'(userId) {
-    check(userId, String);
-    Organisms.remove({ organism: this.userId });
+  'organisms.disconnect'() {
+    Organisms.remove({ userId: this.userId });
   },
   'organisms.prune'() {
     const now = moment().valueOf();

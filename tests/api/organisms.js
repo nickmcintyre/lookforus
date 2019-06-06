@@ -26,14 +26,14 @@ if (Meteor.isServer) {
 
       it('prunes old organisms', function () {
         const pruneSelf = Meteor.server.method_handlers['organisms.prune'];
-        const invocation = { userId };
+        const invocation = null;
         pruneSelf.apply(invocation, [organismId]);
         expect(Organisms.find().count()).to.equal(0);
       });
 
       it('cleans up on disconnect', function () {
         const removeSelf = Meteor.server.method_handlers['organisms.disconnect'];
-        const invocation = { userId };
+        const invocation = null;
         removeSelf.apply(invocation, [organismId]);
         expect(Organisms.find({}).count()).to.equal(0);
       });
