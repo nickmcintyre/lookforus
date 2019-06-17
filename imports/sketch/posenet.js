@@ -38,14 +38,14 @@ export default function (sketch) {
   }
 
   function drawSuperorganism() {
-    if (!window.superorganism || window.superorganism.length === 0) {
+    if (!sketch.superorganism || sketch.superorganism.length === 0) {
       return;
     }
 
     sketch.stroke(0, 0, 0, 125);
     sketch.strokeWeight(5);
-    for (let i = 0; i < window.superorganism.length; i += 1) {
-      const { skeletons } = window.superorganism[i];
+    for (let i = 0; i < sketch.superorganism.length; i += 1) {
+      const { skeletons } = sketch.superorganism[i];
       for (let j = 0; j < skeletons.length; j += 1) {
         const skeleton = skeletons[j];
         for (let k = 0; k < skeleton.length; k += 1) {

@@ -12,9 +12,15 @@ class Sketch extends Component {
     id: PropTypes.string.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.canvas = {};
+  }
+
   componentDidMount() {
     const { id } = this.props;
     this.canvas = new window.p5(posenet, id);
+    this.canvas.superorganism = null;
   }
 
   componentWillUnmount() {
@@ -23,7 +29,7 @@ class Sketch extends Component {
 
   render() {
     const { id, superorganism } = this.props;
-    window.superorganism = superorganism; // FIXME: this is probably a bad idea
+    this.canvas.superorganism = superorganism;
 
     return (
       <div
