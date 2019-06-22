@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
 import './api/organisms';
-import './server/main';
+
 
 describe('lookforus', function () {
   it('package.json has correct name', async function () {
