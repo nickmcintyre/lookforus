@@ -36,9 +36,12 @@ class App extends Component {
         <Image src={'/images/lookforus.png'} size="medium" centered></Image>
         <Header as="h1">Welcome.</Header>
         <p style={{ fontSize: '1.5rem' }}>
-          This is an invitation to consider how your virtual interactions
-          with people shape your perceptions IRL. Who are these figures
-          strewn across your screen? Let's get together and figure it out.
+          Did you get the hint?
+        </p>
+        <p style={{ fontSize: '1.5rem' }}>
+          Social cues are hard. Digital indirection can be calamitous. This is an invitation
+          to consider how your virtual interactions with people shape your perceptions IRL. Who
+          are these figures strewn across your screen? Let's get together and figure it out.
         </p>
         <Segment>
           <Header as="h3"><FaUserSecret /> A note on privacy</Header>
@@ -58,7 +61,7 @@ class App extends Component {
         >
           Participate
         </Button>
-        <p style={{ textAlign: 'center', fontSize: '1rem', paddingTop: '2em' }}>
+        <p style={{ textAlign: 'center', fontSize: '1rem', paddingTop: '2em', paddingBottom: '2em' }}>
           Copyright &copy; 2019 Nick McIntyre. <a href="https://github.com/nickmcintyre/lookforus/blob/master/LICENSE">
           MIT License</a>.
         </p>
