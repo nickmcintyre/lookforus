@@ -26,6 +26,10 @@ export default function (sketch) {
     drawSuperorganism();
   };
 
+  sketch.windowResized = function () {
+    sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
+  };
+
   function insertOrganisms() {
     const skeletons = [];
     for (let i = 0; i < poses.length; i += 1) {

@@ -31,6 +31,7 @@ class App extends Component {
   }
 
   renderInvitation() {
+    const year = new Date().getFullYear();
     return (
       <Container text>
         <Image src={'/images/lookforus.png'} size="medium" centered></Image>
@@ -54,7 +55,7 @@ class App extends Component {
           Participate
         </Button>
         <p style={{ textAlign: 'center', fontSize: '1rem', paddingTop: '2em', paddingBottom: '2em' }}>
-          Copyright &copy; 2019 Nick McIntyre. <a href="https://github.com/nickmcintyre/lookforus/blob/master/LICENSE">
+          Copyright &copy; { year } Nick McIntyre. <a href="https://github.com/nickmcintyre/lookforus/blob/master/LICENSE">
           MIT License</a>.
         </p>
       </Container>
